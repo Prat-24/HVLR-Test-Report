@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVLR Testing Report</title>
+</head>
+
+<body>
+
+    <div class="form-container" id="pdf-content">
+        <table class="header-table">
+            <tr>
+                <td rowspan="2" style="width: 10%; text-align: center;">
+                    <img src="hpcl-logo.png" alt="HP Logo" class="hp-logo">
+                </td>
+                <td class="header-left">
+                    <strong>Hindustan Petroleum Corporation Limited</strong><br><br>
+                    Mumbai Refinery
+                </td>
+                <td rowspan="3" class="header-right">
+                    Issue No: 1<br>
+                    Issue Date: 8/11/2024<br>
+                    Rev No: 0<br>
+                    Rev Date:<br>
+                    <span class="no-wrap">Doc No: HPCL MR/FRM/F&S/08200-11</span>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="header-left">
+                    <strong>Testing of HVLR Report</strong>
+                </td>
+               
+            </tr>
+        </table>
+        
+
+        <!-- Date and Shift -->
+        <div class="flex-row">
+            <div class="form-group">
+                <label>Date:</label>
+                <input type="date" name="date">
+            </div>
+
+            <div class="form-group">
+                <label>Shift:</label>
+                <select name="shift">
+                    <option value="">Select Shift</option>
+                    <option value="20X08">20X08</option>
+                    <option value="08X20">08X20</option>
+                    <option value="16X08">16X08</option>
+                    <option value="16X00">16X00</option>
+                    <option value="08X16">08X16</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- HVLR No and Location -->
+        <div class="flex-row">
+            <div class="form-group">
+                <label>HVLR No:</label>
+                <input type="text" name="hvrlNo">
+            </div>
+
+            <div class="form-group">
+                <label>Location:</label>
+                <input type="text" name="location">
+            </div>
+        </div>
+        
+        <!-- Types of Testing Section -->
+        <h3>Type of Testing</h3>
+        <div class="form-group">
+            <select name="typeOfTesting">
+                <option value="">Select</option>
+                <option value="Dry Running">Dry Running</option>
+                <option value="Wet Running">Wet Running</option>
+            </select>
+        </div>
+
+        <!-- Status Section -->
+        <h3>Control Panel Board</h3>
+        <table>
+            <tr>
+                <th>Component</th>
+                <th>Status</th>
+                <th>Component</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Control Panel Board Condition</td>
+                <td><select name="controlpanel">
+                        <option value="">Select</option>
+                        <option>Good</option>
+                        <option>Bad</option>
+                    </select></td>
+                <td>UP Movement</td>
+                <td><select name="UPmovement">
+                        <option value="">Select</option>
+                        <option>Good</option>
+                        <option>Bad</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Power Supply</td>
+                <td><select name="powersupply">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+                <td>Down Movement</td>
+                <td><select name="downmovement">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Main Take off valve</td>
+                <td><select name="maintakeoffvalue">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+                <td>Left Movement</td>
+                <td><select name="leftmovement">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Monitor Switch</td>
+                <td><select name="MonitorSwitch">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+                <td>Right Movement</td>
+                <td><select name="RightMovement">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Water MOV open</td>
+                <td><select name="WaterMOVopen">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+                <td>Jet Movement</td>
+                <td><select name="JetMovement">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Water MOV Closed</td>
+                <td><select name="WaterMOVClosed">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+                <td>Spray Movement</td>
+                <td><select name="SprayMovement">
+                        <option value="">Select</option>
+                        <option>Working</option>
+                        <option>Not Working</option>
+                    </select></td>
+            </tr>
+        </table>
+
+
+        <h3>Testing Booster Pump</h3>
+        <table>
+            <tr>
+                <td>Power Supply</td>
+                <td><select name="PowerSupply1">
+                        <option value="">Select</option>
+                        <option>Available</option>
+                        <option>Not available</option>
+                        <option>Not applicable</option>
+                        <option>Not checked</option>
+                    </select></td>
+                <td>Condition of Pump</td>
+                <td><select name="ConditionofPump">
+                        <option value="">Select</option>
+                        <option>Not applicable</option>
+                        <option>Not checked</option>
+                        <option>okay</option>
+                        <option>Not okay</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Riser line Drain valve</td>
+                <td><select name="Riserline">
+                        <option value="">Select</option>
+                        <option>Not applicable</option>
+                        <option>Not checked</option>
+                        <option>okay</option>
+                        <option>Not okay</option>
+                        <option>Passing</option>
+                        <option>Not provided</option>
+                        <option>Drop seated</option>
+                        <option>Gland leakage</option>
+                    </select></td>
+                <td>Pump viabration</td>
+                <td><select name="Pumpviabration">
+                        <option value="">Select</option>
+                        <option>Not applicable</option>
+                        <option>Not checked</option>
+                        <option>okay</option>
+                        <option>Not okay</option>
+                    </select></td>
+            </tr>
+            </table>
+
+        <!-- Remarks and Observations -->
+        <div class="form-group">
+            <label>Remarks:</label>
+            <textarea id="msg1" name="remarks"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Other Observations:</label>
+            <textarea id="msg2" name="Otherobservations"></textarea>
+        </div>
+
+        <!-- Testing Info -->
+        <div class="flex-row">
+            <div class="form-group">
+                <label>INSTRUMENT (Maximo notification No):</label>
+                <input type="text" name="instrument">
+            </div>
+            <div class="form-group">
+                <label>ELECTRICAL (Maximo notification No):</label>
+                <input type="text" name="electrical">
+            </div>
+        </div>
+
+        <!-- Save as PDF Button (will be hidden in PDF) -->
+        <button id="saveAsPdf">Save as PDF</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
